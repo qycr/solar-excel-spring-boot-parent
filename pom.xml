@@ -20,6 +20,7 @@
         <spring-swagger.version>2.9.2</spring-swagger.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <gpg.version>1.6</gpg.version>
+        <maven.source.version>3.0.1</maven.source.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -88,7 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>${maven.source.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
