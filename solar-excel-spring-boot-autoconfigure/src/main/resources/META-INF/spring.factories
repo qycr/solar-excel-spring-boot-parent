@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.qycr.framework.boot.autoconfigure.SolarExcelAutoConfiguration,\
+com.qycr.framework.boot.autoconfigure.SolarMvcAutoConfiguration,\
+com.qycr.framework.boot.autoconfigure.SolarSwaggerAutoConfiguration
