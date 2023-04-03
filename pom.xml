@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.qycr</groupId>
+    <groupId>io.github.qycr</groupId>
     <artifactId>solar-excel-spring-boot-parent</artifactId>
-    <version>1.0.RELEASE</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>solar-excel-spring-boot-starter</module>
@@ -14,13 +14,20 @@
         <module>solar-excel-spring-boot-autoconfigure</module>
     </modules>
 
+    <scm>
+        <connection>scm:git@github.com:qycr/solar-excel-spring-boot-parent.git</connection>
+        <developerConnection>scm:git@github.com:qycr/solar-excel-spring-boot-parent.git</developerConnection>
+        <url>git@github.com:qycr/solar-excel-spring-boot-parent.git</url>
+    </scm>
+
     <properties>
         <easyexcel.version>3.1.1</easyexcel.version>
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <spring-swagger.version>2.9.2</spring-swagger.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-        <gpg.version>1.6</gpg.version>
-        <maven.source.version>3.0.1</maven.source.version>
+        <site.version>3.9.1</site.version>
+        <javadoc.version>3.2.0</javadoc.version>
+        <maven.source.version>3.2.1</maven.source.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -30,17 +37,17 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.qycr</groupId>
+                <groupId>io.github.qycr</groupId>
                 <artifactId>solar-excel-spring-boot-excel</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.qycr</groupId>
+                <groupId>io.github.qycr</groupId>
                 <artifactId>solar-excel-spring-boot-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.qycr</groupId>
+                <groupId>io.github.qycr</groupId>
                 <artifactId>solar-excel-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -101,29 +108,43 @@
                 </executions>
             </plugin>
 
-        </plugins>
-      <!--  <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/site</directory>
-                <targetPath>${project.build.directory}/site-src</targetPath>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <configuration>
-                        <siteDirectory>${project.build.directory}/site-src</siteDirectory>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>-->
-    </build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${site.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
